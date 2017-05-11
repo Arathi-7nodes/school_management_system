@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   rolify
-  resourcify
+  # resourcify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,

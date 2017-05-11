@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509122956) do
+ActiveRecord::Schema.define(version: 20170510121434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "divisions", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_divisions_on_user_id", using: :btree
+  end
+
+  create_table "marks", force: :cascade do |t|
+    t.integer  "subject1_mark"
+    t.integer  "subject2_mark"
+    t.integer  "subject3_mark"
+    t.integer  "student_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["student_id"], name: "index_marks_on_student_id", using: :btree
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +41,14 @@ ActiveRecord::Schema.define(version: 20170509122956) do
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
     t.index ["name"], name: "index_roles_on_name", using: :btree
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "division_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["division_id"], name: "index_students_on_division_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,4 +74,7 @@ ActiveRecord::Schema.define(version: 20170509122956) do
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
+  add_foreign_key "divisions", "users"
+  add_foreign_key "marks", "students"
+  add_foreign_key "students", "divisions"
 end
