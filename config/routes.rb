@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root "users#wel"
   get "/wel" => "users#wel"
-  post "/create" => "users#create"
-    post "/edit" => "users#edit"
 
   resources :users
 
