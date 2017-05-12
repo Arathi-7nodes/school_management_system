@@ -17,4 +17,12 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
+ 
+ def after_sign_in_path_for(resource)
+ 	stored_location_for(resource) || new_students_path
+ end
+
+ def after_sign_out_path_for(resource_or_scope)
+ 	wel_path
+ end
 end

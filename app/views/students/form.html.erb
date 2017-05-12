@@ -1,0 +1,19 @@
+<style type="text/css">
+  body 
+    {
+      background-color: skyblue;
+    }
+</style>
+<div class="container" align = "center" style = "padding-top: 150px";>
+  <%= form_for(@student) do |f| %>
+    <div class="form-group">
+      <%= f.label :name  %>
+      <%= f.text_field :name  %>
+    </div>
+    <br>
+      <%= f.submit "Create Student", class: "btn btn-success" %>
+      <%= button_to "Back", new_students_path, class: "btn btn-success"%>
+  <% end %>
+</div>
+<!--<body background="/home/user/Downloads/p.jpg">
+</body>
