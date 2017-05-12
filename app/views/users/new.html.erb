@@ -1,0 +1,81 @@
+<nav class="navbar navbar-default">
+<div class="container-fluid">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+  <div class="collapse navbar-collapse login_back" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav navbar-left">
+    <span class="label label-primary"><li> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %><span class="glyphicon glyphicon-log-in">ro</span> Logout</a></li></span></li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+
+ <div class="col-md-12">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= form_for(@user, url: '/create') do |f| %>
+
+        <div class="row">
+          <div class="col-md-2">
+
+            <div class="form-group ">
+              <label for="example-text-input" class="col-2 col-form-label">name</label>
+
+            </div>
+          </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.text_field :name, placeholder:"Enter your user name",class: "form-control" %>
+          </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+
+            <div class="form-group ">
+              <label for="example-text-input" class="col-2 col-form-label">password</label>
+
+            </div>
+          </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <%= f.password_field :password, placeholder:"Enter your password",class: "form-control" %>
+          </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+
+            <div class="form-group ">
+              <label for="example-text-input" class="col-2 col-form-label">email</label>
+
+            </div>
+          </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.text_field :email, placeholder:"Enter your user email",class: "form-control" %>
+          </div>
+
+        </div>
+        </div>
+          <div class="col-md-2">
+          <div class="col-md-6">
+
+
+    <div class="btn btn-primary">
+            <%= f.submit "SIGN UP" %>
+            </div>
+          </div>
+          </div>
+      <% end %>
+
+    <div class="col-md-2"></div>
+</div>
